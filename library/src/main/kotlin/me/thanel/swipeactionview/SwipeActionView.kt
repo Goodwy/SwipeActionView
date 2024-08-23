@@ -965,7 +965,7 @@ class SwipeActionView : FrameLayout {
             stopPress()
         }
 
-        if (dragging) {
+        if (dragging && parent != null) {
             parent.requestDisallowInterceptTouchEvent(false)
             dragging = false
         }
