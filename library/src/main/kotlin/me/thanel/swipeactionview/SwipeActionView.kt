@@ -253,7 +253,7 @@ class SwipeActionView : FrameLayout {
      *
      * (Defaults to 3)
      */
-    var dragResistance = 3
+    var dragResistance = 1
         set(newResistance) {
             if (newResistance < 1) {
                 throw IllegalArgumentException("Drag resistance must be a value greater than or equal to 1. Provided: $newResistance")
