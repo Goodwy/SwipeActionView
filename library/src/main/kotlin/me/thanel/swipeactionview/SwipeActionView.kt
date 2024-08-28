@@ -580,6 +580,17 @@ class SwipeActionView : FrameLayout {
             }
 
             MotionEvent.ACTION_MOVE -> {
+                if (useHapticFeedback) {
+                    if (hasSwipedFarEnoughForHapticFeedback(container.translationX)) {
+                        if (needHapticFeedback) {
+                            performHapticFeedback(
+                                HapticFeedbackConstants.VIRTUAL_KEY,
+                                HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                            )
+                            needHapticFeedback = false
+                        }
+                    } else needHapticFeedback = true
+                }
                 return handleMoveEvent(e)
             }
 
@@ -608,6 +619,26 @@ class SwipeActionView : FrameLayout {
         }
 
         return dragging
+    }
+
+    private var needHapticFeedback = true
+
+    /**
+     * Use haptic feedback when swiping
+     */
+    var useHapticFeedback = true
+
+    /**
+     * Tell whether the user has swiped view far enough to perform a haptic feedback when swiping
+     *
+     * @param swipeDistance The performed swipe distance.
+     *
+     * @return Whether the user has swiped far enough
+     */
+    private fun hasSwipedFarEnoughForHapticFeedback(swipeDistance: Float) = when {
+        swipeDistance < 0 -> swipeDistance < -minLeftActivationDistance
+        swipeDistance > 0 -> swipeDistance > minRightActivationDistance
+        else -> false
     }
 
     override fun dispatchDraw(canvas: Canvas) {
