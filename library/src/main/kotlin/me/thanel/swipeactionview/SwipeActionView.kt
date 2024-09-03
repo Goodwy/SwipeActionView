@@ -580,16 +580,28 @@ class SwipeActionView : FrameLayout {
             }
 
             MotionEvent.ACTION_MOVE -> {
-                if (useHapticFeedback) {
-                    if (hasSwipedFarEnoughForHapticFeedback(container.translationX)) {
-                        if (needHapticFeedback) {
-                            performHapticFeedback(
-                                HapticFeedbackConstants.VIRTUAL_KEY,
-                                HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
-                            )
-                            needHapticFeedback = false
-                        }
-                    } else needHapticFeedback = true
+                val swipedRight = container.translationX > 0
+                if (hasSwipedFarEnoughForHapticFeedback(container.translationX)) {
+                    if (needHapticFeedback) {
+                        if (useHapticFeedback) performHapticFeedback(
+                            HapticFeedbackConstants.VIRTUAL_KEY,
+                            HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                        )
+                        needHapticFeedback = false
+                        needReversHapticFeedback = true
+                        swipeGestureListener?.onSwipedActivated(swipedRight)
+                    }
+                } else needHapticFeedback = true
+                if (needReversHapticFeedback) {
+                    if (hasSwipedFarEnoughForHapticFeedbackRevers(container.translationX)) {
+                        if (useHapticFeedback) performHapticFeedback(
+                            HapticFeedbackConstants.VIRTUAL_KEY,
+                            HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                        )
+                        needHapticFeedback = true
+                        needReversHapticFeedback = false
+                        swipeGestureListener?.onSwipedDeactivated(swipedRight)
+                    }
                 }
                 return handleMoveEvent(e)
             }
@@ -622,6 +634,7 @@ class SwipeActionView : FrameLayout {
     }
 
     private var needHapticFeedback = true
+    private var needReversHapticFeedback = false
 
     /**
      * Use haptic feedback when swiping
@@ -638,6 +651,12 @@ class SwipeActionView : FrameLayout {
     private fun hasSwipedFarEnoughForHapticFeedback(swipeDistance: Float) = when {
         swipeDistance < 0 -> swipeDistance < -minLeftActivationDistance
         swipeDistance > 0 -> swipeDistance > minRightActivationDistance
+        else -> false
+    }
+
+    private fun hasSwipedFarEnoughForHapticFeedbackRevers(swipeDistance: Float) = when {
+        swipeDistance < 0 -> swipeDistance > -minLeftActivationDistance
+        swipeDistance > 0 -> swipeDistance < minRightActivationDistance
         else -> false
     }
 
