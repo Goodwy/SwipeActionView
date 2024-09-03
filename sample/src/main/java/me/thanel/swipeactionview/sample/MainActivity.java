@@ -17,6 +17,7 @@
 package me.thanel.swipeactionview.sample;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -70,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
                 showToast(true, false);
                 return true;
             }
+
+            @Override
+            public void onSwipedActivated(boolean swipedRight) {
+                showToast(swipedRight, false);
+            }
+
+            @Override
+            public void onSwipedDeactivated(boolean swipedRight) {
+                showToast(swipedRight, false);
+            }
         };
 
         SwipeActionView swipeRight = findViewById(R.id.swipe_right);
@@ -120,6 +131,16 @@ public class MainActivity extends AppCompatActivity {
                 swipeActionView.animateToOriginalPosition(500);
                 return false;
             }
+
+            @Override
+            public void onSwipedActivated(boolean isLeft) {
+                //do nothing
+            }
+
+            @Override
+            public void onSwipedDeactivated(boolean isLeft) {
+                //do nothing
+            }
         };
 
         SwipeActionView swipeDelayed = findViewById(R.id.swipe_delayed);
@@ -161,6 +182,16 @@ public class MainActivity extends AppCompatActivity {
                 //do nothing
                 return true;
             }
+
+            @Override
+            public void onSwipedActivated(boolean isLeft) {
+                //do nothing
+            }
+
+            @Override
+            public void onSwipedDeactivated(boolean isLeft) {
+                //do nothing
+            }
         };
 
         SwipeActionView swipeComplete = findViewById(R.id.swipe_complete);
@@ -178,8 +209,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void swipeLeft(View view) {
-        swipeCustomLayout.animateInDirection(SwipeDirection.Left, true);
-        swipeCustomLayout.setActivationDistanceRatio(0.2f);
+//        swipeCustomLayout.animateInDirection(SwipeDirection.Left, true);
+//        swipeCustomLayout.setActivationDistanceRatio(0.2f);
+        Log.d("ResponseClick", "Clicked");
     }
 
     public void swipeRight(View view) {
