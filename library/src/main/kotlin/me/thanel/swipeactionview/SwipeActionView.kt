@@ -1000,6 +1000,7 @@ class SwipeActionView : FrameLayout {
                     } else {
                         swipeGestureListener?.onSwipeLeftComplete(this)
                     }
+                    needReversHapticFeedback = false
                 }
             }
         }
