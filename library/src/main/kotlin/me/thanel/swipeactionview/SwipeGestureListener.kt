@@ -94,4 +94,18 @@ interface SwipeGestureListener {
      * @param swipeActionView The [SwipeActionView] from which this method was invoked.
      */
     fun onSwipeRightComplete(swipeActionView: SwipeActionView) {}
+
+    /**
+     * Callback method to be invoked when the user reaches the activationDistanceRatio value.
+     *
+     * @param swipeActionView The [SwipeActionView] from which this method was invoked.
+     */
+    fun onSwipedActivated(swipedRight: Boolean) {}
+
+    /**
+     * Callback method to be invoked when when the user goes back through the ActivationDistanceRatio value.
+     *
+     * @param swipeActionView The [SwipeActionView] from which this method was invoked.
+     */
+    fun onSwipedDeactivated(swipedRight: Boolean) {}
 }
