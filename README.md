@@ -10,8 +10,10 @@ SwipeActionView is a swipe-able view, which allows users to perform actions by s
 It's a forked from Tunous/SwipeActionView
 Key differences:
 - Modified drag resistance
-- Added haptic feedback when crossing the activation zone
-- Added activation zone crossing listener to perform some actions when crossing the activation zone.
+- Added haptic feedback when crossing the activation zone ([Haptic feedback](#haptic-feedback))
+- Added activation zone crossing listener to perform some actions when crossing the activation zone ([Activation distance listener](#activation-distance-listener))
+
+Library usage [example]
 
 # Table of contents
 - [Preview](#preview)
@@ -27,6 +29,8 @@ Key differences:
 - [Click listeners](#click-listeners)
 - [Animate from code](#code-animation)
 - [Activation distance](#activation-distance)
+- [Haptic feedback](#haptic-feedback)
+- [Activation distance listener](#activation-distance-listener)
 - [Attributes](#attr)
   - [sav_rippleTakesPadding](#attr-rippleTakesPadding)
   - [sav_swipeLeftRippleColor](#attr-swipeLeftRippleColor)
@@ -260,7 +264,7 @@ You can customize the siwpe distance required for callbacks to be executed by us
 # <a id="haptic-feedback">Haptic feedback</a>
 Haptic feedback is enabled by default, you can disable it with the `useHapticFeedback` boolean variable. Haptic feedback occurs when the user crosses the `activationDistanceRatio` values in either direction.
 
-# <a id="gesture-listener">Activation distance listener</a>
+# <a id="activation-distance-listener">Activation distance listener</a>
 If you need to perform an action when crossing `activationDistanceRatio`, then use `onSwipedActivated(boolean swipedRight)`, if you need to perform an action when the user changed his mind and backtracked to `activationDistanceRatio`, then use `onSwipedDeactivated(boolean swipedRight)`.
 
 For example this could be used to start some animation.
@@ -336,3 +340,4 @@ limitations under the License.
 [Brian Robles]: https://github.com/brianrobles204
 [KarmaMachine]: https://play.google.com/store/apps/details?id=com.brianrobles204.karmamachine
 [SwipeRippleDrawable]: https://github.com/Tunous/SwipeActionView/blob/master/library/src/main/kotlin/me/thanel/swipeactionview/SwipeRippleDrawable.kt
+[example]: https://github.com/Goodwy/Messages
