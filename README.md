@@ -252,7 +252,7 @@ swipeView.animateToOriginalPosition()
 You can customize the siwpe distance required for callbacks to be executed by using the `activationDistanceRatio` property. It receives a value in range from `0.0f` to `1.0f`, which means the percentage of background view that has to be revealed. For example if set to `0.5f` the user has to reveal at least half of the background view before releasing their finger in order for the gesture callbacks to be executed.
 
 # <a id="haptic-feedback">Haptic feedback</a>
-Haptic feedback is enabled by default, you can disable it using the `useHapticFeedback` boolean variable. Haptic feedback occurs when the user reaches the `activationDistanceRatio` value.
+Haptic feedback is enabled by default, you can disable it with the `useHapticFeedback` boolean variable. Haptic feedback occurs when the user crosses the `activationDistanceRatio` values in either direction.
 
 # <a id="gesture-listener">Activation distance listener</a>
 If you need to perform an action when crossing `activationDistanceRatio`, then use `onSwipedActivated(boolean swipedRight)`, if you need to perform an action when the user changed his mind and backtracked to `activationDistanceRatio`, then use `onSwipedDeactivated(boolean swipedRight)`.
