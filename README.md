@@ -7,6 +7,12 @@
 
 SwipeActionView is a swipe-able view, which allows users to perform actions by swiping it to the left or right side.
 
+It's a forked from Tunous/SwipeActionView
+Key differences:
+- Modified drag resistance
+- Added haptic feedback when crossing the activation zone
+- Added activation zone crossing listener to perform some actions when crossing the activation zone.
+
 # Table of contents
 - [Preview](#preview)
 - [Installation](#installation)
