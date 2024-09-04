@@ -254,6 +254,25 @@ You can customize the siwpe distance required for callbacks to be executed by us
 # <a id="haptic-feedback">Haptic feedback</a>
 Haptic feedback is enabled by default, you can disable it using the `useHapticFeedback` boolean variable. Haptic feedback occurs when the user reaches the `activationDistanceRatio` value.
 
+# <a id="gesture-listener">Activation distance listener</a>
+If you need to perform an action when crossing `activationDistanceRatio`, then use `onSwipedActivated(boolean swipedRight)`, if you need to perform an action when the user changed his mind and backtracked to `activationDistanceRatio`, then use `onSwipedDeactivated(boolean swipedRight)`.
+
+For example this could be used to start some animation.
+
+```java
+swipeView.setSwipeGestureListener(new SwipeGestureListener() {
+    @Override
+    public boolean onSwipedActivated(boolean swipedRight) {
+        showToast("If you release it, onSwipedLeft() or onSwipedRight() will be triggered.");
+    }
+
+    @Override
+    public boolean onSwipedDeactivated(boolean swipedRight) {
+        showToast("If you let it go, onSwipedLeft() or onSwipedRight() will not triggered.");
+    }
+});
+```
+
 # <a id="attr">Attributes</a>
 
 #### <a id="attr-rippleTakesPadding">`app:sav_rippleTakesPadding="true|false"`</a>
