@@ -238,7 +238,7 @@ class SwipeActionView : FrameLayout {
      * The percentage of the swipe distance (width of the revealed view) after which swipe
      * callbacks should be executed. (Defaults to 80%)
      */
-    var activationDistanceRatio = 0.8f
+    var activationDistanceRatio = 0.95f
         set(newRatio) {
             if (newRatio < 0f || newRatio > 1f) {
                 throw IllegalArgumentException("Activation distance ratio must be a value in range <0.0f, 1.0f>. Provided: $newRatio")
