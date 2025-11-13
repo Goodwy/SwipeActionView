@@ -81,7 +81,7 @@ class SwipeActionView : FrameLayout {
     /**
      * The minimum speed required to execute swipe callback if user didn't swipe far enough.
      */
-    private val minActivationSpeed = 100f
+    private val minActivationSpeed = 150f
 
     /**
      * The velocity tracker.
@@ -107,12 +107,12 @@ class SwipeActionView : FrameLayout {
     /**
      * The duration of ripple animation.
      */
-    private val rippleAnimationDuration = 300L
+    private val rippleAnimationDuration = 400L
 
     /**
      * The duration of swipe animation.
      */
-    private val swipeAnimationDuration = 150L
+    private val swipeAnimationDuration = 200L
 
     /**
      * Bounds for the ripple animations.
