@@ -81,7 +81,7 @@ class SwipeActionView : FrameLayout {
     /**
      * The minimum speed required to execute swipe callback if user didn't swipe far enough.
      */
-    private val minActivationSpeed = 150f
+    private val minActivationSpeed = 300f
 
     /**
      * The velocity tracker.
