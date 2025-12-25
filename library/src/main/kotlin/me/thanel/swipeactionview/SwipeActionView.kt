@@ -926,7 +926,7 @@ class SwipeActionView : FrameLayout {
 
         //val swipedFastEnough = abs(velocityTracker.xVelocity) > minActivationSpeed
 
-        if (swipedFastEnough && !isValidDelta(velocityTracker.xVelocity)) {
+        if (/*swipedFastEnough && */!isValidDelta(velocityTracker.xVelocity)) {
             animateToOriginalPosition()
             return
         }
