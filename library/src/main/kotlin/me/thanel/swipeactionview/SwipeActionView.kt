@@ -81,7 +81,7 @@ class SwipeActionView : FrameLayout {
     /**
      * The minimum speed required to execute swipe callback if user didn't swipe far enough.
      */
-    private val minActivationSpeed = 300f
+    private val minActivationSpeed = 150f
 
     /**
      * The velocity tracker.
@@ -923,7 +923,7 @@ class SwipeActionView : FrameLayout {
         cancelDrag(false)
         velocityTracker.computeCurrentVelocity(100)
 
-        val swipedFastEnough = abs(velocityTracker.xVelocity) > minActivationSpeed
+        val swipedFastEnough = false //abs(velocityTracker.xVelocity) > minActivationSpeed
 
         if (swipedFastEnough && !isValidDelta(velocityTracker.xVelocity)) {
             animateToOriginalPosition()
